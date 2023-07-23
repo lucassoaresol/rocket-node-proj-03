@@ -7,7 +7,7 @@
     "dev": "tsx watch src/server.ts",
     "build": "tsup src",
     "start": "node dist/server.js",
-    "vercel-build": "npx prisma migrate deploy"
+    "vercel-build": "npx prisma generate & npx prisma migrate deploy"
   },
   "keywords": [],
   "author": "",
