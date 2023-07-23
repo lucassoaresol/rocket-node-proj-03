@@ -21,11 +21,11 @@ export const register = async (
     const registerUseCase = new RegisterUseCase(prismaUsersRepository)
 
     await registerUseCase.execute(userRequest)
-  } catch (error) {
-    if (error instanceof UserAlreadyExistsError)
-      return reply.status(409).send({ message: error.message })
+  } catch (err) {
+    if (err instanceof UserAlreadyExistsError)
+      return reply.status(409).send({ message: err.message })
 
-    return reply.status(500).send()
+    throw err
   }
 
   return reply.status(201).send()
